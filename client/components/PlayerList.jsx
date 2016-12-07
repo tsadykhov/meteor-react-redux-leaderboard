@@ -5,26 +5,17 @@
 import React from 'react';
 import Player from './Player.jsx';
 
-//import { createContainer } from 'meteor/react-meteor-data';
+import { createContainer } from 'meteor/react-meteor-data';
 
-//import { Players } from '../../imports/players';
+import { Players } from '../../imports/players';
 
 class PlayerList extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    getPlayers() {
-        return [
-            {name: "Ada Lovelace"},
-            {name: "Grace Hopper"},
-            {name: "Nikola Tesla"}
-        ]
-    }
-
     renderPlayers() {
-        //return this.props.players.map((player) =>(
-        return this.getPlayers().map((player) =>(
+        return this.props.players.map((player) =>(
             <Player player={player} />
         ));
     }
@@ -39,13 +30,11 @@ class PlayerList extends React.Component {
 }
 
 PlayerList.propTypes = {
-    //players: React.PropTypes.array.isRequired
+    players: React.PropTypes.array.isRequired
 };
 
-export default PlayerList;
-
-/*export default createContainer(() => {
+export default createContainer(() => {
     return {
         players: Players.find({}).fetch()
     };
-}, PlayerList);*/
+}, PlayerList);
